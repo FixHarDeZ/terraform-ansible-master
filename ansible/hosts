@@ -1,0 +1,5 @@
+[webserver]
+<webserver-private-ip>
+
+[database]
+<database-private-ip>
