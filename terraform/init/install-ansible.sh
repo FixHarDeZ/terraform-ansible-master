@@ -12,8 +12,9 @@ yum install -y git.x86_64
 yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum install -y ansible
 cd /tmp
-git clone https://github.com/mschirbel/terraform-ansible.git
-cd terraform-ansible/
+#git clone https://github.com/mschirbel/terraform-ansible.git
+git clone https://github.com/FixHarDeZ/terraform-ansible-master
+cd terraform-ansible-master/ansible
 
 #Add web01 ip to ansible
 sed -i -e "/^.*Ex 1.*/a [webserver]\n${web01_address}" /etc/ansible/hosts
@@ -24,4 +25,6 @@ sed -i -e "/^.*Ex 1.*/a [database]\n${db01_address}" /etc/ansible/hosts
 chmod 400 /home/ec2-user/.ssh/fix-key.pem
 
 echo "Install ansible completed!!!
-ansible-playbook /tmp/terraform-ansible/ansible/site.yml --key-file \"~/.ssh/fix-key.pem\"" >> /tmp/install_status.log
+Run with ec2-user
+ansible -m ping all --key-file \"~/.ssh/fix-key.pem\"
+ansible-playbook /tmp/terraform-ansible-master/ansible/site.yml --key-file \"~/.ssh/fix-key.pem\"" >> /tmp/install_status.log
