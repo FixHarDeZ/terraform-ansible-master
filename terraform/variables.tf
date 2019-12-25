@@ -1,8 +1,8 @@
 variable "aws_access_key" {
-    default = "AKIA6IPAB7T34HY7OZWH"
+    default = "AKIA6IPAB7T3SH36PSE3"
 }
 variable "aws_secret_key" {
-    default = "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"
+    default = "Sbbblfu+PEqub0eaXCwrm9XAObHBA4gPDdj2FSVh"
 }
 variable "aws_key_path" {
     default = "/Users/s90762/DevOps/Lab/SCB-AWS_Sandbox/terraform-ansible-master/keys"
