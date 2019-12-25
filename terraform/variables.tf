@@ -5,7 +5,7 @@ variable "aws_secret_key" {
     default = "MpXzjN3SwbJycBFkr1iYM9ZZH1HFD3l7NC+cwYXD"
 }
 variable "aws_key_path" {
-    default = "/Users/s90762/DevOps/Lab/terraform-ansible-master/keys"
+    default = "/Users/s90762/DevOps/Lab/SCB-AWS_Sandbox/terraform-ansible-master/keys"
 }
 variable "aws_key_name" {
     default = "fix-key"
