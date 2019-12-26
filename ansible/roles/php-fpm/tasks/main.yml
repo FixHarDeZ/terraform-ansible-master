@@ -1,17 +1,12 @@
 ---
-- name: Install wget
-  yum:
-    name:
-      - wget
-    state: present
-
-- name : wget epel-release-latest-7.noarch.rpm
-  shell: wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+- name : Download epel-release-latest-7.noarch.rpm
+  get_url: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  dest: /tmp/epel-release-latest-7.noarch.rpm
 
 - name: Install EPEL Repo 7
   yum:
     name:
-      - epel-release-latest-7.noarch.rpm
+      - /tmp/epel-release-latest-7.noarch.rpm
     state: present
 
 - name: Install Remi Repo and Enable remi repo
@@ -30,7 +25,7 @@
 
 - name: Upgrade all Packages
   yum:
-    name: '*'
+    name: "*"
     state: latest
 
 - name: Install php-fpm and deps
