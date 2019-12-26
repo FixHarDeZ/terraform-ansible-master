@@ -1,15 +1,23 @@
 ---
-- name: Install EPEL Repo
+- name: Install wget
   yum:
     name:
-      - epel-release
+      - wget
+    state: present
+
+- name : wget epel-release-latest-7.noarch.rpm
+  shell: wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+- name: Install EPEL Repo 7
+  yum:
+    name:
+      - epel-release-latest-7.noarch.rpm
     state: present
 
 - name: Install Remi Repo and Enable remi repo
   yum:
     name:
       - http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-    state: present
 
 - name: Install yum-utils
   yum:
