@@ -24,16 +24,11 @@
 - name: enable remi-php72
   shell: yum-config-manager --enable remi-php72
 
-- name: remove epel-release
+- name: Install libargon2
   yum:
     name:
-      - epel-release
-    state: absent
-
-- name: Upgrade all Packages
-  yum:
-    name: "*"
-    state: latest
+      - http://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/l/libargon2-20161029-3.el7.x86_64.rpm
+    state: present
 
 - name: Install php-fpm and deps
   yum:  
