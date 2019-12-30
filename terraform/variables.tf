@@ -20,7 +20,9 @@ variable "amis" {
     description = "AMIs by region"
     default = {
         #sa-east-1 = "ami-0669a96e355eac82f"
-        ap-southeast-1 = "ami-03bb7d49f98ba72f1"
+        #ap-southeast-1 = "ami-03bb7d49f98ba72f1"
+        #Redhat8 Free AMI
+        ap-southeast-1 = "ami-04a2d6660f1296314"
     }
 }
 
