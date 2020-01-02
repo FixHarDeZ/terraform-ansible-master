@@ -1,4 +1,10 @@
 ---
+- name: Install python2-PyMySQL
+  yum:
+    name:
+      - python2-PyMySQL
+    state: present
+
 - name: Download WordPress
   get_url: url=http://wordpress.org/wordpress-{{ wp_version }}.tar.gz dest=/srv/wordpress-{{ wp_version }}.tar.gz sha256sum="{{ wp_sha256sum }}"
 
