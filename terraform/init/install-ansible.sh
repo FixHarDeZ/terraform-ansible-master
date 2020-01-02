@@ -7,7 +7,7 @@ setenforce 0
 getenforce > /tmp/install_status.log
 
 yum list
-yum update -y
+#yum update -y
 yum install -y git.x86_64
 dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 dnf -y install --enablerepo epel-playground ansible
