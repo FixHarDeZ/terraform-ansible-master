@@ -30,4 +30,4 @@
   file: path=/srv/wordpress/ owner=wordpress group=wordpress state=directory recurse=yes setype=httpd_sys_content_t
 
 - name: Start php-fpm Service
-  service: name=php72-php-fpm.service state=started enabled=yes
+  service: name=php-fpm.service state=started enabled=yes
