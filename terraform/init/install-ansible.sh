@@ -9,8 +9,8 @@ getenforce > /tmp/install_status.log
 yum list
 yum update -y
 yum install -y git.x86_64
-yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-yum install -y ansible
+dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+dnf -y install --enablerepo epel-playground ansible
 cd /tmp
 #git clone https://github.com/mschirbel/terraform-ansible.git
 git clone https://github.com/FixHarDeZ/terraform-ansible-master
