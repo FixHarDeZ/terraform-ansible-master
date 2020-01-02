@@ -1,54 +1,64 @@
 ---
-- name : Download epel-release-latest-7.noarch.rpm
-  get_url: 
-    url: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-    dest: /tmp/epel-release-latest-7.noarch.rpm
+- name : Download epel-release-latest-8.noarch.rpm
+  get_url:
+    url: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    dest: /tmp/epel-release-latest-8.noarch.rpm
 
-- name: Install EPEL Repo 7
+- name: Install EPEL Repo 8
   yum:
     name:
-      - /tmp/epel-release-latest-7.noarch.rpm
+      - /tmp/epel-release-latest-8.noarch.rpm
     state: present
 
 - name: Install Remi Repo and Enable remi repo
   yum:
     name:
-      - http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+      - https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
-- name: Install yum-utils
-  yum:
-    name:
-      - yum-utils
-    state: present
+- name: Reset php module
+  shell: dnf module reset php -y
 
-- name: enable remi-php72
-  shell: yum-config-manager --enable remi-php72
-
-- name: Install libargon2
-  yum:
-    name:
-      - http://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/l/libargon2-20161029-3.el7.x86_64.rpm
-    state: present
+- name: Enable module php:remi-7.3
+  shell: yum module enable php:remi-7.3 -y
 
 - name: Install php-fpm and deps
   yum:  
     name:
-      - php72
-      - php72-php-fpm
-      - php72-php-enchant
-      - php72-php-mbstring
-      - php72-php-mysql
-      - php72-php-process
-      - php72-php-xml
-      - php72-php-json
-      - php72-php-mysqlnd
-      - php72-php-xmlrpc
-      - php72-php-opcache
+      - php
+      - php-cli
+      - php-common
+      - php-fpm
+      - php-mysqlnd
+      - php-dom
+      - php-simplexml
+      - php-ssh2
+      - php-xml
+      - php-xmlreader
+      - php-curl
+      - php-date
+      - php-exif
+      - php-filter
+      - php-ftp
+      - php-gd
+      - php-hash
+      - php-iconv
+      - php-json
+      - php-libxml
+      - php-pecl-imagick
+      - php-mbstring
+      - php-mysqlnd
+      - php-openssl
+      - php-pcre
+      - php-posix
+      - php-sockets
+      - php-spl
+      - php-tokenizer
+      - php-zlib
     state: present
 
-- name: Create a directory /var/run/php-fpm if it does not exist
+- name: Create a directory /var/run/php if it does not exist
   file:
-    path: /var/run/php-fpm
+    path: /var/run/php
     state: directory
     mode: '0755'
 
@@ -63,9 +73,9 @@
     name: wordpress
 
 - name: Disable default pool
-  command: mv /etc/opt/remi/php72/php-fpm.d/www.conf /etc/opt/remi/php72/php-fpm.d/www.disabled creates=/etc/opt/remi/php72/php-fpm.d/www.disabled
-  notify: restart php72-php-fpm.service
+  command: mv /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.disabled creates=/etc/php-fpm.d/www.disabled
+  notify: restart php-fpm.service
 
 - name: Copy php-fpm configuration
-  template: src=wordpress.conf dest=/etc/opt/remi/php72/php-fpm.d/
-  notify: restart php72-php-fpm.service
+  template: src=wordpress.conf dest=/etc/php-fpm.d/
+  notify: restart php-fpm.service
