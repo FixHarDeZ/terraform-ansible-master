@@ -30,7 +30,7 @@
     password: 
       - "{{ wp_db_password }}"
     priv:
-      - "{{ wp_db_name }}".*:ALL
+      - "{{ wp_db_name }}.*:ALL"
     host: 'localhost'
     state: present
 
