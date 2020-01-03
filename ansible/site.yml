@@ -1,4 +1,14 @@
 ---
+- name: Install MySQL
+  hosts: database
+  remote_user: ec2-user
+  # remote_user: user
+  become: yes
+  become_method: sudo
+  roles:
+    - common
+    - mysql
+
 - name: Install WordPress, Nginx, and PHP-FPM
   hosts: webserver
   remote_user: ec2-user
@@ -10,13 +20,3 @@
     - nginx
     - php-fpm
     - wordpress
-
-- name: Install MySQL
-  hosts: database
-  remote_user: ec2-user
-  # remote_user: user
-  become: yes
-  become_method: sudo
-  roles:
-    - common
-    - mysql

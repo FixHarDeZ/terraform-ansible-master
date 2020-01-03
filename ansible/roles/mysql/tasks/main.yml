@@ -17,4 +17,7 @@
   - restart mysql
 
 - name: Start Mysql Service
-  service: name=mysqld state=started enabled=yes
+  service:
+    name: mysqld
+    state: started
+    enabled: yes
