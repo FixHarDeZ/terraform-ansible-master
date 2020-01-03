@@ -26,7 +26,7 @@ sed -i -e "/^.*Ex 1.*/a [database]\n${db01_address}" /etc/ansible/hosts
 chmod 400 /home/ec2-user/.ssh/fix-key.pem
 
 #Add db ip to ansible
-sed -i -e "/localhost/${db01_address}/g" /tmp/terraform-ansible-master/ansible/roles/wordpress/templates/wp-config.php
+sed -i -e "s/localhost/${db01_address}/g" /tmp/terraform-ansible-master/ansible/roles/wordpress/templates/wp-config.php
 
 echo "Install ansible completed!!!
 Run with ec2-user
