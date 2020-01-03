@@ -11,6 +11,7 @@ yum list
 yum install -y git.x86_64
 dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 dnf -y install --enablerepo epel-playground ansible
+yum install -y python2-PyMySQL
 cd /tmp
 #git clone https://github.com/mschirbel/terraform-ansible.git
 git clone https://github.com/FixHarDeZ/terraform-ansible-master
