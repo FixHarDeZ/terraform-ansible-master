@@ -22,7 +22,7 @@
     - wordpress
 
 - name: Install exporter
-  host:
+  hosts:
     - database
     - webserver
   remote_user: ec2-user
