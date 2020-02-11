@@ -20,3 +20,14 @@
     - nginx
     - php-fpm
     - wordpress
+
+- name: Install exporter
+  host:
+    - database
+    - webserver
+  remote_user: ec2-user
+  # remote_user: user
+  become: yes
+  become_method: sudo
+  roles:
+    - exporter

@@ -1,0 +1,15 @@
+---
+- name: Copy node_exporter rpm file
+  template: src=node_exporter-0.18.1-1.el7.centos.x86_64.rpm dest=/tmp/
+
+- name: Install node_exporter
+  yum:
+    name:
+      - /tmp/node_exporter-0.18.1-1.el7.centos.x86_64.rpm
+    state: present
+
+- name: Start node_exporter
+  service:
+    name: node_exporter
+    state: started
+    enabled: yes
